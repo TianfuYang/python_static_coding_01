@@ -1,0 +1,106 @@
+body {margin: 0;}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* background-color: #ffaa7f; */
+	background-image: linear-gradient(#1b70ef,#9198e5);
+	
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-image: linear-gradient(#55aaff,#9198e5)}
+
+ul.topnav li a.active {background-image: linear-gradient(#00a1d6,#9198e5)}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 260px){
+    ul.topnav li.right, 
+    ul.topnav li {float: none;}
+}
+
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+li.dropdown {
+    display: inline-block;
+	
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-image: linear-gradient(#9198e5,#3d94ff);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	right: 0rem;
+	z-index:100
+}
+
+.dropdown-content a {
+	background-image: linear-gradient(#55aaff,#3d94ff);
+	/* background-color: blueviolet; */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #ff5500}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.button {
+    
+    border: none;
+    color: white;
+    padding: 2px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+	width: 5rem;
+	;
+}
+
+.button1 {border-radius: 2px;background-color: #ff787a; /* Green */}
+.button2 {border-radius: 4px;background-color: #4CAF50; /* Green */}
+.button3 {border-radius: 4px;background-color: #71b151; /* Green */}
+.button4 {border-radius: 4px;background-color: #b39cd5; /* Green */}
+.button5 {border-radius: 4px;background-color: #05c05b; /* Green */}
+.button_sure {border-radius: 4px;border-radius: 4px;
+    background-color: #e2f2ff;color: #4CAF50;width: 3rem;
+    position: absolute;}
+.button_cancel {border-radius: 4px;border-radius: 4px;
+    background-color: #fed7c0;color:#ff3a3a;width: 3rem;}
+img.bottom_pic{width: 100px;height: 100px;
+display: block;margin: auto; position:relative;
+bottom:10%;top: 110px;}
+.bottom_txt{
+	position: relative;
+	width: 100%;
+	margin: auto;
+	bottom:5%;
+	top: 100px;
+	
+	text-align:center;
+}

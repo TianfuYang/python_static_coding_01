@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta name="referrer" content="never">
+		<meta name="author" content="langtaosanqian">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>python网页编辑器</title>
+		<link rel="shortcut icon"
+			href="https://mmbiz.qpic.cn/mmbiz_jpg/AdNricvciadh0QricxFsQ4jg1rBuJDWdLticxtAK30uTgbIUlpNYkV8lgnnXMIaueMBBWNWgMqictssElOAAKTb437Q/0?wx_fmt=jpeg"
+			type="image/x-icon" />
+		<link rel="stylesheet" href="./ceshi_ht.css">
+		<link rel="stylesheet" href="./pyscript.css">
+		<script defer src="./ceshi_ht.js"></script>
+		<!-- <script defer src="./pyscript.js"></script> -->
+		<!-- <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" /> -->
+		<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+		<script defer src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+	</head>
+	<body onload="check_libs()">
+		<div id=python_lib>
+		</div>
+		<div>
+			<!-- <img src="./home2.png" alt=""> -->
+			<ul class="topnav">
+				<li><a class="active" href="https://space.bilibili.com/455954948/" target="_blank">B站：浪淘三千</a></li>
+				<li class="dropdown right"><a href="#contact">代码合集</a>
+				<div class="dropdown-content">
+					<a href="https://web-cloud-18d172-1257097792.tcloudbaseapp.com/code_set/fang_cheng/fang_cheng.html" target="_blank" class="dropdown-content-a">解数学方程</a>
+					<a onclick="confirm('考虑将来怎么用这个功能')">处理本地文件</a>
+					<a onclick="confirm('谢谢支持')">思考准备点什么功能集</a>
+				</div>
+				</li>
+				<li class="dropdown right"><a class="fa fa-bars" style="font-size:24px"></a>
+					<div class="dropdown-content">
+						<a href="https://www.runoob.com/python3/python3-intro.html" target="_blank">查看python文档</a>
+						<a onclick="myFunction()" class="dropdown-content-a">切换python库</a>
+						<a onclick="bigImg_out()">小程序做练习</a>
+						<a href="https://wood.codemao.cn/" target="_blank">海龟画图</a>
+						<a href="https://space.bilibili.com/455954948/" target="_blank">B站私信提问</a>
+						
+						<a href="https://web-cloud-18d172-1257097792.tcloudbaseapp.com/Bilibili_LangTaoSanQian.html" target="_self">初始化页面</a>
+						<!-- <a href="#"></a> -->
+					</div>
+				</li>
+				<!-- <li class="right"><a href="https://space.bilibili.com/455954948/" target="_blank">提问</a></li> -->
+			</ul>
+		</div>
+
+		<!-- 代码框上的输入框部分 -->
+		<div id="div_input" style="display: none;">
+			<p style="color: #5998e3;"><cite>请输入库名: (不同库名用 + 号连接)</cite></p>
+			<input type="text" value="" name="input_lib_names" placeholder="例如：numpy+matplotlib"
+				style="border: 2px solid #e2f2ff;width: 70%;border-left: 10px solid #768fe7;">
+			<button class="button button_cancel" onclick="cancel_myFunction()">取消</button>
+			<button class="button button_sure" onclick="load_new_lib(this)">确定</button>
+			
+		</div>
+
+		<!-- 代码框部分 -->
+		<div>
+			<div>
+				<ul id=1>
+					<div style="display: none;justify-content: space-around;margin-top: 20px;" id="div_id_1">
+						<button class="button button2" onclick="clean_code(1)">清除</button>
+						<button class="button button3" onclick="insert_code(1)">插入一行</button>
+						<button class="button button4" onclick="copy_code(1)">分享</button>
+						<button class="button button5" onclick="show_menu(1)">关闭</button>
+					</div>
+					<button onclick="show_menu(1)" id='ti_shi_1' onmouseover='tishi(this)' onmouseout="tishi_del(this)"
+						style="float: left;color: #084804b8;font-size: 0.8rem;margin-top: 0.3rem;">举例-1> </button>
+					<li id="li_id_1">
+						<py-repl>print('hello ，我是浪淘三千~') # 点击右侧直接运行
+						</py-repl>
+					</li>
+				</ul>
+			</div>
+
+			<!--<h1  style="color: #8495e5;
+			text-align: center;">py-repl 标签可以嵌入代码编辑框，书写代码完点击编辑框右侧的运行按钮即可：</h1>-->
+
+			<div>
+				<ul id=2>
+					<div style="display: none;justify-content: space-around;margin-top: 20px;" id="div_id_2">
+						<button class="button button2" onclick="clean_code(2)">清除</button>
+						<button class="button button1" onclick="remove_code(2)">删除</button>
+						<button class="button button3" onclick="insert_code(2)">插入一行</button>
+						<button class="button button4" onclick="copy_code(2)">分享</button>
+						<button class="button button5" onclick="show_menu(2)">关闭</button>
+					</div>
+					<button onclick="show_menu(2)" draggable="true" ondragend="remove_code(2)" id='ti_shi_2'
+						onmouseover='tishi(this)' onmouseout="tishi_del(this)"
+						style="float: left;color: #a52a2ab8;font-size: 0.8rem;margin-top: 0.3rem;">代码-2> </button>
+					<li id="li_id_2">
+						<py-repl>
+					</li>
+				</ul>
+			</div>
+
+			<!--<h1>④ py-env 标签里可以写需要用的库名字 前面加一个横线  -  比如 -matplotlib</h1>-->
+			<div id="daimakuang">
+				<ul id=3>
+					<div style="display: none;justify-content: space-around;margin-top: 20px;" id="div_id_3">
+						<button class="button button2" onclick="clean_code(3)">清除</button>
+						<button class="button button1" onclick="remove_code(3)">删除</button>
+						<button class="button button3" onclick="insert_code(3)">插入一行</button>
+						<button class="button button4" onclick="copy_code(3)">分享</button>
+						<button class="button button5" onclick="show_menu(3)">关闭</button>
+					</div>
+					<div>
+						<button onclick="show_menu(3)" draggable="true" ondragend="remove_code(3)" id='ti_shi_3'
+							onmouseover='tishi(this)' onmouseout="tishi_del(this)"
+							style="float: left;color: #a52a2ab8;font-size: 0.8rem;margin-top: 0.3rem;">代码-3> </button>
+						<li id="li_id_3">
+							<py-repl>
+						</li>
+					</div>
+					<ul>
+			</div>
+
+			<div>
+				<p id="demo"></p>
+			</div>
+
+		</div>
+
+
+		<div style="padding:0 16px;">
+			<p class="bottom_txt" style="color: gray;"><cite id="name_tishi">Python智慧问答</cite></p>
+			<img title="做练习可以扫我哦" onmouseover="bigImg(this)" onmouseout="bigImg_out2(this)" ondblclick="c_img(this)"
+				class="bottom_pic"
+				src="https://mmbiz.qpic.cn/mmbiz_jpg/AdNricvciadh0QricxFsQ4jg1rBuJDWdLticxtAK30uTgbIUlpNYkV8lgnnXMIaueMBBWNWgMqictssElOAAKTb437Q/0?wx_fmt=jpeg"
+				alt="Python智慧问答">
+
+		</div>
+
+	</body>
+</html>

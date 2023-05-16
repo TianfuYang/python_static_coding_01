@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta name="referrer" content="never">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+		<title>python网页编辑器</title>
+		<link rel="shortcut icon"
+			href="https://mmbiz.qpic.cn/mmbiz_jpg/AdNricvciadh0QricxFsQ4jg1rBuJDWdLticxtAK30uTgbIUlpNYkV8lgnnXMIaueMBBWNWgMqictssElOAAKTb437Q/0?wx_fmt=jpeg"
+			type="image/x-icon" />
+		<!-- <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" /> -->
+		<!-- <script defer src="https://pyscript.net/alpha/pyscript.js"></script> -->
+		<script src="https://unpkg.com/vue@next"></script>
+		<!-- 新 Bootstrap5 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+		<!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+	</head>
+	<body onload="check_libs()">
+		<!--配置页面环境 需要什么库就在下面写上。库名前面加个 - 号 和 空格 当然了 此网页不需要了-->
+		<!--如有疑问可以通过微信 Python智慧问答 小程序 或者B站私信 浪淘三千 提问 (目前小程序后台资源经常不够用，建议B站私信)-->
+		<div id=python_lib>
+		</div>
+		<div style="background-color: #eb8ae8;background-image: linear-gradient(#eb8ae8, #9198e5);">
+			<h3><a style="color:blue;font-size" 1rem;" href="https://space.bilibili.com/455954948/"
+					target="_blank">B站：浪淘三千 -- https://space.bilibili.com/455954948/</a></h3>
+			<span>
+				<p style="color:#c044df">（建议使用chrome浏览器，有时加载时间可能较长）</p>
+				<div>
+					<button
+						style="position: fixed;top: 3px;right: 25%;color: #fff;background-color: #0d6efd;border-color: #0d6efd;border: 1px solid transparent;border-radius: 0.25rem;font-size: 1rem;"
+						onclick="myFunction()">
+						<text id="qr_code_txt">点我切换python第三方库</text>
+					</button>
+					<img title="点我可以增加代码输入框" id="qr_code" onmouseover="bigImg(this)" onmouseout="bigImg_out(this)"
+						onclick="c_img(this)" style="width:100px;height:100px;position: fixed;top: 3px;right: 10%;"
+						src="https://mmbiz.qpic.cn/mmbiz_jpg/AdNricvciadh0QricxFsQ4jg1rBuJDWdLticxtAK30uTgbIUlpNYkV8lgnnXMIaueMBBWNWgMqictssElOAAKTb437Q/0?wx_fmt=jpeg">
+					</img>
+				</div>
+				<p>① 点击上面的链接可以查看本网页功能的介绍视频，<a href="https://github.com/pyscript/pyscript" target="_blank"
+						style="color:lightgray">点击我可以查看github开源代码地址</a></p>
+				<p style="color:lightgray"> Tips:(学习python有问题可以通过右侧<span style="color:lightgreen;"> Python智慧问答</span>
+					小程序 或者<a style="color:#dfd6c4" href="https://space.bilibili.com/455954948/"
+						target="_blank">B站私信</a>提问)</p>
+				<p style="color:#4a1f45"> 代码书写介绍：</p>
+			</span>
+		</div>
+
+		<!--<div>
+    <py-script>  print ( "② py-script 标签可以在标签里写python代码，然后渲染时会直接在浏览器端出结果") </py-script> 
+</div>-->
+
+		<div>
+			<ul>
+				<button onclick="clean_code(1)" id='ti_shi_1' onmouseover='tishi(this)' onmouseout="tishi_del(this)"
+					style="float: left;color: #084804b8;font-size: 0.8rem;margin-top: 0.3rem;">举例-1> </button>
+				<li id="li_id_1">
+					<py-repl>print('hello ，大浪淘沙真金炼 ，弱水三千一瓢饮，我是你们答疑解惑的浪老师 -- B站：浪淘三千') # 点击右侧直接运行</py-repl>
+				</li>
+			</ul>
+		</div>
+
+		<!--<h1  style="color: #8495e5;
+    text-align: center;">py-repl 标签可以嵌入代码编辑框，书写代码完点击编辑框右侧的运行按钮即可：</h1>-->
+
+		<div>
+			<ul id=2>
+				<button onclick="clean_code(2)" draggable="true" ondragend="remove_code(2)" id='ti_shi_2'
+					onmouseover='tishi(this)' onmouseout="tishi_del(this)"
+					style="float: left;color: #a52a2ab8;font-size: 0.8rem;margin-top: 0.3rem;">代码-2> </button>
+				<li id="li_id_2">
+					<py-repl>
+				</li>
+			</ul>
+		</div>
+
+		<!--<h1>④ py-env 标签里可以写需要用的库名字 前面加一个横线  -  比如 -matplotlib</h1>-->
+		<div id="daimakuang">
+			<ul id=3>
+				<button onclick="clean_code(3)" draggable="true" ondragend="remove_code(3)" id='ti_shi_3'
+					onmouseover='tishi(this)' onmouseout="tishi_del(this)"
+					style="float: left;color: #a52a2ab8;font-size: 0.8rem;margin-top: 0.3rem;">代码-3> </button>
+				<li id="li_id_3">
+					<py-repl>
+				</li>
+				<ul>
+		</div>
+
+		<div>
+			<p id="demo"></p>
+		</div>
+
+
+
+		<script>
+			var id_num = 4;
+
+			function bigImg(x) {
+				//console.log(window.location.pathname)
+				//console.log(window.location.href,x)
+				//console.log('显示小程序码提示文字')
+				var tag_tishi = document.getElementById(x.id + "_txt");
+				tag_tishi.innerHTML = "~>~点击小程序码<br>可以增加代码行~>~";
+				tag_tishi.parentNode.style.background = "#11c3c3";
+			}
+
+			function bigImg_out(x) {
+				//console.log(window.location.pathname)
+				//console.log(window.location.href)
+				//console.log('显示小程序码提示文字')
+				var tag_tishi = document.getElementById(x.id + "_txt");
+				tag_tishi.innerHTML = "点击切换python第三方库";
+				tag_tishi.parentNode.style.background = "#0d6efd";
+			}
+
+			function tishi(x) {
+				//console.log('修改删除提示颜色',x)
+				var tag_tishi = document.getElementById(x.id);
+				tag_tishi.style.color = "red";
+			}
+
+			function tishi_del(x) {
+				//console.log('恢复删除按钮颜色',x)
+				var tag_tishi = document.getElementById(x.id);
+				if (x.id == "ti_shi_1") {
+					tag_tishi.style.color = "#084804b8";
+				} else {
+					tag_tishi.style.color = " #a52a2ab8";
+				}
+
+			}
+
+			function check_libs() {
+				var cur_url = window.location.href
+				console.log("indexOf('?')--", cur_url.indexOf("?"))
+				// 如果url里没有参数 那什么也不做
+				if (cur_url.indexOf("?") != -1) {
+					var python_lib_k = cur_url.split("?")
+					var python_lib_kv = python_lib_k[python_lib_k.length - 1]
+					var python_libs = python_lib_kv.split("=")[1].split("+")
+
+					var lib_num = python_libs.length
+					console.log('带参数过来的', python_lib_kv, python_libs, lib_num)
+					if (lib_num > 0) {
+						var lib_str = ''
+						var tag = document.getElementById("python_lib")
+						for (var i = 0; i < lib_num; i++) {
+							var lib_str = lib_str + "- " + python_libs[i] + "\n"
+						}
+						var tag_py = '<py-env id="python_lib2">' + lib_str + '</py-env>'
+						tag.innerHTML = tag_py
+						console.log('这是lib_str', lib_str)
+					} else {
+						console.log("空跳过来了")
+					}
+				} else {
+					console.log("无参进来的")
+				}
+			}
+
+			function myFunction() {
+				var txt;
+				var cur_url = window.location.href
+				var lib_names = prompt("请输入您需要的第三方python库的名字,不同的库用+号连接 例如：", "numpy+matplotlib");
+				if (lib_names == null || lib_names == "") {
+					console.log("用户取消输入")
+				} else {
+					txt = "你输入的是，" + lib_names + "!";
+					var key_name = lib_names
+					//document.getElementById("demo").innerHTML = txt;
+					console.log("要跳转的地址是：" + cur_url + '?key=' + key_name)
+					window.open(cur_url + '?key=' + key_name, '_blank')
+				}
+
+			}
+
+			// 清除当前代码编辑框内的代码
+			function clean_code(x) {
+				// console.log(444,x)
+				var r = confirm("你要清除代码框 " + x + " 内的文本吗？");
+				if (r == true) {
+					// console.log("您按了确认！",x);
+					var tag = document.createElement('py-repl');
+					var tag_clearn = document.getElementById("li_id_" + x);
+					// 重置内容
+					tag_clearn.innerHTML = '<py-repl></py-repl>'
+				} else {
+					alert("您按了取消！")
+				}
+			}
+
+			// 删除当前代码编辑框
+			function remove_code(x) {
+				//console.log("删除代码框 id=",x)
+				var r = confirm("该操做会删除代码框 " + x + " ，确定删除吗？");
+				if (r == true) {
+					//console.log("您按了确认！",x);
+					var tag_remove = document.getElementById(x);
+					// 移除内容 parent.removeChild(child);
+					tag_remove.remove()
+				} else {
+					alert("您按了取消！")
+				}
+
+			}
+
+			// 创建新的代码编辑框	
+			function c_img(x) {
+				//console.log("用户点击了小程序码，创建新的代码框")
+				// 创建新标签 document.createElement('标签名')
+				var tag = document.createElement('ul');
+				tag.setAttribute('id', id_num)
+				// 给新标签增加内容
+				tag.innerHTML = '<button id=ti_shi_' + id_num + ' draggable="true" ondragend="remove_code(' + id_num +
+					')" onmouseover="tishi(this)"  onmouseout ="tishi_del(this)"   onclick="clean_code(' + id_num +
+					')" style="float: left;color: #a52a2ab8;font-size: 0.8rem;margin-top: 0.3rem;">代码-' + id_num +
+					'> </button><li id =li_id_' + id_num + '><py-repl></li>'
+				// 获取标签
+				var tag2 = document.getElementById('daimakuang');
+				// ID 计数 加1
+				id_num = this.id_num + 1
+				// 增加属性
+				// tag.setAttribute('class','one')
+				// 追加标签  
+				//把tag追加到tag2标签内部底部
+				tag2.appendChild(tag)
+			}
+		</script>
+		
+
+	</body>
+</html>
